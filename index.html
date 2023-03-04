@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Form</title>
+<style>
+body{
+    text-align:center;
+    font-family: Arial, sans-serif;
+    background-color:#f2f2f2;
+    padding:15px;
+}
+form{
+    border:2px solid #cbcbcb;
+    padding:15px;
+    width:400px;
+    margin:0 auto;
+    background-color:#fff;
+}
+h2{
+    text-align:center;
+    font-size:18px;
+    color:#006699;
+    margin:0 0 10px 0;
+}
+input[type="text"]{
+    width:100%;
+    margin:0 0 15px 0;
+    padding:10px;
+    font-size:14px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+input[type="submit"]{
+    background-color:#0099cc;
+    border:0;
+    color:#fff;
+    padding:10px;
+    font-size:14px;
+    margin:0 0 15px 0;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+<?php
+$name= $phone= $email= $location= $age= $university= "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
+    $location = $_POST["location"];
+    $age = $_POST["age"];
+    $university = $_POST["university"];
+}
+?>
+<?php
+if(isset($_POST['submit']))
+{
+    echo "<h2>Thank you for filling the form $name</h2>";
+}
+else
+{
+?>
+<form action="" method="post">
+<h2>Page 1</h2>
+<input type="text" name="name" placeholder="Name" />
+<input type="text" name="phone" placeholder="Phone" />
+<input type="text" name="email" placeholder="Email" />
+<input type="submit" name="submit" value="Next" />
+</form>
+<?php
+}
+if(isset($_POST['submit']))
+{
+?>
+<form action="" method="post">
+<h2>Page 2</h2>
+<input type="text" name="location" placeholder="Location" />
+<input type="text" name="age" placeholder="Age" />
+<input type="text" name="university" placeholder="University" />
+<input type="submit" name="submit" value="Submit" />
+</form>
+<?php
+}
+?>
+</body>
+</html>
